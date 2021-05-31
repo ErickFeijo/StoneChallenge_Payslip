@@ -36,13 +36,13 @@ namespace Domain.Shared
         private static void DiscountOptionalBenefits(ICollection<Entry> entries, double salary, bool hasHealthPlan, bool hasDentalPlan, bool hasCommuterBenefits)
         {
             if (hasHealthPlan)
-                entries.Add(new Entry(EntryType.Discount, 10, "Plano de Saúde"));
+                entries.Add(new Entry(EntryType.Discount, BenefitsCalculator.CalculateHealthPlanDeduction(), "Plano de Saúde"));
 
             if (hasDentalPlan)
-                entries.Add(new Entry(EntryType.Discount, 5, "Plano Dental"));
+                entries.Add(new Entry(EntryType.Discount, BenefitsCalculator.CalculateDentalPlanDeduction(), "Plano Dental"));
 
             if (hasCommuterBenefits && salary >= 1500)
-                entries.Add(new Entry(EntryType.Discount, (salary * (double)0.06), "Vale Transporte"));
+                entries.Add(new Entry(EntryType.Discount, BenefitsCalculator.CalculateCommuterBenefitsDeduction(salary), "Vale Transporte"));
         }
 
         public static double CalculateProportionalSalary(double salary, DateTime admission)
