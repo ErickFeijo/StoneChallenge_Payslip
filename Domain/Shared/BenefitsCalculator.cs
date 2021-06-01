@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using static Domain.Enums.PayslipEnums;
-using static StoneChallenge_Payslip.Domain.Payslip;
 
 namespace Domain.Shared
 {
@@ -9,7 +6,7 @@ namespace Domain.Shared
     {
         public static double CalculateCommuterBenefitsDeduction(double salary)
         {
-            return (salary * (double)0.06);
+            return Math.Round((salary * (double)0.06), 2);
         }
         public static double CalculateDentalPlanDeduction()
         {

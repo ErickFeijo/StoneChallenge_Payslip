@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using StoneChallenge_Payslip.Domain.Entities;
 using static Domain.Enums.PayslipEnums;
 
-namespace StoneChallenge_Payslip.Domain
+namespace StoneChallenge_Payslip.Domain.Entities
 {
     public class Payslip
     {

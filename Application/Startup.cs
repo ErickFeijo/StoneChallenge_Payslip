@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using StoneChallenge_Payslip.Infra.Data.Context;
 using Autofac;
 using StoneChallenge_Payslip.Infra.CrossCutting.IoC;
+using System;
+using static Domain.Enums.PayslipEnums;
 
 namespace StoneChallenge_Payslip.Application
 {
@@ -37,7 +39,13 @@ namespace StoneChallenge_Payslip.Application
 
             services.AddDbContext<MySqlContext>(options =>
             {
-                var stringConnection = "Server=localhost;Port=3306;user=root;password=M36nbp7@1;database=StoneChallengePayslipDB";
+                var host = Configuration["MySQL_server"] ?? "localhost";
+                var port = Configuration["MySQL_port"] ?? "3306";
+                var password = Configuration["MySQL_password"] ?? Configuration.GetConnectionString("MYSQL_PASSWORD");
+                var userid = Configuration["MySQL_username"] ?? Configuration.GetConnectionString("MYSQL_USER");
+                var userDataBase = Configuration["MySQL_database"] ?? Configuration.GetConnectionString("MYSQL_DATABASE");
+
+                var stringConnection = $"Server={host};Port={port};user={userid};password={password};database={userDataBase}";
 
                 options.UseMySql(stringConnection, ServerVersion.AutoDetect(stringConnection), opt =>
                 {
@@ -52,7 +60,11 @@ namespace StoneChallenge_Payslip.Application
 
                 config.CreateMap<CreateEmployee, Domain.Entities.Employee>();                
                 config.CreateMap<Domain.Entities.Employee, Employee>();
-                
+
+                config.CreateMap<Domain.Entities.Payslip, Payslip>();
+                config.CreateMap<Domain.Entities.Payslip.Entry, Payslip.Entry>().ForMember(x => x.Type,
+                 opt => opt.MapFrom(source => source.Type == EntryType.Discount ? "Desconto" : "Remuneração" )); ;
+
                 #endregion
 
             }).CreateMapper());

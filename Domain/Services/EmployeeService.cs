@@ -15,7 +15,7 @@ namespace StoneChallenge_Payslip.Service.Services
         {
         }
 
-        public Payslip GetPayslip(int idEmployee)
+        public TOutputModel GetPayslip<TOutputModel>(int idEmployee)
         {
             var employee = _baseRepository.Select(idEmployee);
 
@@ -24,7 +24,9 @@ namespace StoneChallenge_Payslip.Service.Services
 
             DateTime referenceMonth = DateTime.Today.AddMonths(-1);
 
-            return new Payslip(employee, referenceMonth);
+            TOutputModel outputModel = _mapper.Map<TOutputModel>(new Payslip(employee, referenceMonth));
+
+            return outputModel;
         }
     }
 }

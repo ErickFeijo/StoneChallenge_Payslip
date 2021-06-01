@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using static Domain.Enums.PayslipEnums;
-using static StoneChallenge_Payslip.Domain.Payslip;
+using static StoneChallenge_Payslip.Domain.Entities.Payslip;
 
 namespace Domain.Shared
 {

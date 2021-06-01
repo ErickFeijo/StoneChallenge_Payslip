@@ -26,15 +26,7 @@ namespace StoneChallenge_Payslip.Infra.Data.Context
         
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            if (!options.IsConfigured)
-            {
-                string connectionString = "Server = localhost; Port = 3306; user = root; password = M36nbp7@1; database = StoneChallengePayslipDB";
-                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), opt =>
-                {
-                    opt.CommandTimeout(180);
-                    opt.EnableRetryOnFailure(5);
-                });
-            }
+
         }
     }
 }

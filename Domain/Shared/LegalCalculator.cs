@@ -10,25 +10,35 @@ namespace Domain.Shared
     {
         public static double CalculateFGTS(double salary)
         {
-            return (salary * 0.08);
+            return Math.Round((salary * 0.08), 2);
         }
 
         public static double CalculateINSS(double salary)
         {
+            double result;
+
             if (salary <= 1045)
-                return salary * 0.075;
-
-            if (salary >= 1045.01 && salary <= 2089.60)
-                return salary * 0.09;
-
-            if (salary >= 2089.61 && salary <= 3134.40)
-                return salary * 0.12;
-
-            if (salary >= 3134.41 && salary <= 6101.06)
-                return salary * 0.14;
-
-            return 6101.06 * 0.14;
-
+            {
+                result = salary * 0.075;
+            }
+            else if (salary >= 1045.01 && salary <= 2089.60)
+            {
+                result = salary * 0.09;
+            }
+            else if (salary >= 2089.61 && salary <= 3134.40)
+            {
+                result = salary * 0.12;
+            }
+            else if (salary >= 3134.41 && salary <= 6101.06)
+            {
+                result = salary * 0.14;
+            }
+            else
+            {
+                result = 6101.06 * 0.14;
+            }
+            
+            return Math.Round(result, 2);
         }
 
         public static double CalculateIRRF(double salary)
@@ -66,7 +76,7 @@ namespace Domain.Shared
 
             double result = baseCalc * aliquot;
 
-            return result > deduction ? deduction : result;
+            return Math.Round(result > deduction ? deduction : result, 2);
 
         }
 

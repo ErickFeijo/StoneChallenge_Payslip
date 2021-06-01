@@ -1,12 +1,8 @@
 using Domain.Shared;
 using System;
-using System.Linq;
-using System.Collections;
 using Xunit;
-using static StoneChallenge_Payslip.Domain.Payslip;
 using System.Collections.Generic;
-using StoneChallenge_Payslip.Domain.Entities;
-using StoneChallenge_Payslip.Domain;
+using static StoneChallenge_Payslip.Domain.Entities.Payslip;
 
 namespace UnitTest
 {
@@ -37,11 +33,11 @@ namespace UnitTest
         }
 
         [Theory]
-        [InlineData(1045, 78.375)] //7,5%
-        [InlineData(2089.60, 188.064)] //9%
-        [InlineData(3134.40, 376.128)] //12%
-        [InlineData(6101.06, 854.1484000000002)] //14%
-        [InlineData(10000, 854.1484000000002)] //Teto
+        [InlineData(1045, 78.38)] //7,5%
+        [InlineData(2089.60, 188.06)] //9%
+        [InlineData(3134.40, 376.13)] //12%
+        [InlineData(6101.06, 854.15)] //14%
+        [InlineData(10000, 854.15)] //Teto
         public void Shared_LegalCalculator_CalculateINSS(double salary, double expectedINSS)
         {
             var result = LegalCalculator.CalculateINSS(salary);

@@ -6,6 +6,6 @@ namespace StoneChallenge_Payslip.Domain.Interfaces
 {
     public interface IEmployeeService : IBaseService<Employee>
     {
-        Payslip GetPayslip(int idEmployee);
+        TOutputModel GetPayslip<TOutputModel>(int idEmployee);
     }
 }

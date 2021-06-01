@@ -41,7 +41,7 @@ namespace StoneChallenge_Payslip.Application.Controllers
             if (idEmployee == 0)
                 return NotFound();
 
-            return Execute(() => _employeeService.GetPayslip(idEmployee));
+            return Execute(() => _employeeService.GetPayslip<Models.Payslip>(idEmployee));
         }
 
         private IActionResult Execute(Func<object> func)
