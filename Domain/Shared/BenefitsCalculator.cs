@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using static Domain.Enums.PayslipEnums;
-using static WarzoneLobbyOrganizer.Domain.Payslip;
+using static StoneChallenge_Payslip.Domain.Payslip;
 
 namespace Domain.Shared
 {

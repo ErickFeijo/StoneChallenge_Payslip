@@ -2,7 +2,7 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace WarzoneLobbyOrganizer.Application
+namespace StoneChallenge_Payslip.Application
 {
     public class Program
     {

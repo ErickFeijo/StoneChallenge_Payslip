@@ -1,8 +1,8 @@
 ﻿using Autofac;
-using WarzoneLobbyOrganizer.Domain.Interfaces;
-using WarzoneLobbyOrganizer.Infra.Data.Repository;
+using StoneChallenge_Payslip.Domain.Interfaces;
+using StoneChallenge_Payslip.Infra.Data.Repository;
 
-namespace WarzoneLobbyOrganizer.Infra.CrossCutting.IoC
+namespace StoneChallenge_Payslip.Infra.CrossCutting.IoC
 {
     public class ModuleIoCRepository : Module
     {

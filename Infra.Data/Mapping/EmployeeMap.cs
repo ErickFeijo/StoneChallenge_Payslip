@@ -1,8 +1,8 @@
-﻿using WarzoneLobbyOrganizer.Domain.Entities;
+﻿using StoneChallenge_Payslip.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace WarzoneLobbyOrganizer.Infra.Data.Mapping
+namespace StoneChallenge_Payslip.Infra.Data.Mapping
 {
     public class EmployeeMap : IEntityTypeConfiguration<Employee>
     {

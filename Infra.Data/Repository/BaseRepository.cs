@@ -1,10 +1,10 @@
-﻿using WarzoneLobbyOrganizer.Domain.Entities;
-using WarzoneLobbyOrganizer.Domain.Interfaces;
-using WarzoneLobbyOrganizer.Infra.Data.Context;
+﻿using StoneChallenge_Payslip.Domain.Entities;
+using StoneChallenge_Payslip.Domain.Interfaces;
+using StoneChallenge_Payslip.Infra.Data.Context;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarzoneLobbyOrganizer.Infra.Data.Repository
+namespace StoneChallenge_Payslip.Infra.Data.Repository
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {

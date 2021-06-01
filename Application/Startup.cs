@@ -1,16 +1,16 @@
 using AutoMapper;
-using WarzoneLobbyOrganizer.Application.Models;
+using StoneChallenge_Payslip.Application.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WarzoneLobbyOrganizer.Infra.Data.Context;
+using StoneChallenge_Payslip.Infra.Data.Context;
 using Autofac;
-using WarzoneLobbyOrganizer.Infra.CrossCutting.IoC;
+using StoneChallenge_Payslip.Infra.CrossCutting.IoC;
 
-namespace WarzoneLobbyOrganizer.Application
+namespace StoneChallenge_Payslip.Application
 {
     public class Startup
     {
@@ -37,7 +37,7 @@ namespace WarzoneLobbyOrganizer.Application
 
             services.AddDbContext<MySqlContext>(options =>
             {
-                var stringConnection = "Server=localhost;Port=3306;user=root;password=M36nbp7@1;database=WarzoneLobbyDB";
+                var stringConnection = "Server=localhost;Port=3306;user=root;password=M36nbp7@1;database=StoneChallengePayslipDB";
 
                 options.UseMySql(stringConnection, ServerVersion.AutoDetect(stringConnection), opt =>
                 {
@@ -69,7 +69,7 @@ namespace WarzoneLobbyOrganizer.Application
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API WarzoneLobbyOrganizer");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API StoneChallenge_Payslip");
             });
 
             app.UseHttpsRedirection();

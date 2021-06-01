@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WarzoneLobbyOrganizer.Application": {
+    "StoneChallenge_Payslip.Application": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/user",

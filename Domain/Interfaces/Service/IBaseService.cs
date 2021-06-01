@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using WarzoneLobbyOrganizer.Domain.Entities;
+using StoneChallenge_Payslip.Domain.Entities;
 using System.Collections.Generic;
 
-namespace WarzoneLobbyOrganizer.Domain.Interfaces
+namespace StoneChallenge_Payslip.Domain.Interfaces
 {
     public interface IEmployeeService : IBaseService<Employee>
     {

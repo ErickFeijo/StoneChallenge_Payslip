@@ -2,10 +2,10 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using WarzoneLobbyOrganizer.Domain.Entities;
+using StoneChallenge_Payslip.Domain.Entities;
 using static Domain.Enums.PayslipEnums;
 
-namespace WarzoneLobbyOrganizer.Domain
+namespace StoneChallenge_Payslip.Domain
 {
     public class Payslip
     {

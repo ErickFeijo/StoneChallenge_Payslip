@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WarzoneLobbyOrganizer.Application.Models
+namespace StoneChallenge_Payslip.Application.Models
 {
     public class CreateEmployee
     {

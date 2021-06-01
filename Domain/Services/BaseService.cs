@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using WarzoneLobbyOrganizer.Domain.Entities;
-using WarzoneLobbyOrganizer.Domain.Interfaces;
+using StoneChallenge_Payslip.Domain.Entities;
+using StoneChallenge_Payslip.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarzoneLobbyOrganizer.Service.Services
+namespace StoneChallenge_Payslip.Service.Services
 {
     public class BaseService<TEntity> : IBaseService<TEntity> where TEntity : BaseEntity
     {

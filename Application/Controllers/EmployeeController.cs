@@ -1,10 +1,10 @@
-﻿using WarzoneLobbyOrganizer.Application.Models;
-using WarzoneLobbyOrganizer.Domain.Interfaces;
-using WarzoneLobbyOrganizer.Service.Validators;
+﻿using StoneChallenge_Payslip.Application.Models;
+using StoneChallenge_Payslip.Domain.Interfaces;
+using StoneChallenge_Payslip.Service.Validators;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace WarzoneLobbyOrganizer.Application.Controllers
+namespace StoneChallenge_Payslip.Application.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -35,7 +35,7 @@ namespace WarzoneLobbyOrganizer.Application.Controllers
             return Execute(() => _employeeService.GetById<Models.Employee>(id));
         }
 
-        [HttpGet("{idEmployee}")]
+        [HttpGet("Payslip/{idEmployee}")]
         public IActionResult GetPayslip(int idEmployee)
         {
             if (idEmployee == 0)
@@ -54,7 +54,7 @@ namespace WarzoneLobbyOrganizer.Application.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(ex.Message);
             }
         }
     }

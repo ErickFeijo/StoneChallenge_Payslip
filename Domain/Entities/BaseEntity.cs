@@ -1,4 +1,4 @@
-﻿namespace WarzoneLobbyOrganizer.Domain.Entities
+﻿namespace StoneChallenge_Payslip.Domain.Entities
 {
     public abstract class BaseEntity
     {

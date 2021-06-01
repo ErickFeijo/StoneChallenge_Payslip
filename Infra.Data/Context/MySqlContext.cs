@@ -1,8 +1,8 @@
-﻿using WarzoneLobbyOrganizer.Domain.Entities;
-using WarzoneLobbyOrganizer.Infra.Data.Mapping;
+﻿using StoneChallenge_Payslip.Domain.Entities;
+using StoneChallenge_Payslip.Infra.Data.Mapping;
 using Microsoft.EntityFrameworkCore;
 
-namespace WarzoneLobbyOrganizer.Infra.Data.Context
+namespace StoneChallenge_Payslip.Infra.Data.Context
 {
     public class MySqlContext : DbContext
     {
@@ -28,7 +28,7 @@ namespace WarzoneLobbyOrganizer.Infra.Data.Context
         {
             if (!options.IsConfigured)
             {
-                string connectionString = "Server = localhost; Port = 3306; user = root; password = M36nbp7@1; database = WarzoneLobbyDB";
+                string connectionString = "Server = localhost; Port = 3306; user = root; password = M36nbp7@1; database = StoneChallengePayslipDB";
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), opt =>
                 {
                     opt.CommandTimeout(180);

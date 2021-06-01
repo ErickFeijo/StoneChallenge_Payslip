@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using WarzoneLobbyOrganizer.Domain.Entities;
+using StoneChallenge_Payslip.Domain.Entities;
 
-namespace WarzoneLobbyOrganizer.Service.Validators
+namespace StoneChallenge_Payslip.Service.Validators
 {
     public class EmployeeValidator : AbstractValidator<Employee>
     {

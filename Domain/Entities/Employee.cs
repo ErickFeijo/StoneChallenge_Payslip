@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WarzoneLobbyOrganizer.Domain.Entities
+namespace StoneChallenge_Payslip.Domain.Entities
 {
     public class Employee : BaseEntity
     {

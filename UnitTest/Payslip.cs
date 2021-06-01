@@ -3,10 +3,10 @@ using System;
 using System.Linq;
 using System.Collections;
 using Xunit;
-using static WarzoneLobbyOrganizer.Domain.Payslip;
+using static StoneChallenge_Payslip.Domain.Payslip;
 using System.Collections.Generic;
-using WarzoneLobbyOrganizer.Domain.Entities;
-using WarzoneLobbyOrganizer.Domain;
+using StoneChallenge_Payslip.Domain.Entities;
+using StoneChallenge_Payslip.Domain;
 
 namespace UnitTest
 {
