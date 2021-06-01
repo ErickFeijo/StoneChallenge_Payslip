@@ -12,7 +12,6 @@ namespace StoneChallenge_Payslip.Infra.Data.Context
         }
         public MySqlContext(DbContextOptions<MySqlContext> options) : base(options)
         {
-
         }
 
         public DbSet<Employee> Employees { get; set; }

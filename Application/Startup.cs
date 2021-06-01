@@ -45,7 +45,7 @@ namespace StoneChallenge_Payslip.Application
                 var userid = Configuration["MySQL_username"] ?? Configuration.GetConnectionString("MYSQL_USER");
                 var userDataBase = Configuration["MySQL_database"] ?? Configuration.GetConnectionString("MYSQL_DATABASE");
 
-                var stringConnection = $"Server={host};Port={port};user={userid};password={password};database={userDataBase}";
+                var stringConnection = $"server={host};userid={userid};pwd={password};port={port};database={userDataBase}";
 
                 options.UseMySql(stringConnection, ServerVersion.AutoDetect(stringConnection), opt =>
                 {

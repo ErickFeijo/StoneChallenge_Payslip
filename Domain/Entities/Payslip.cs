@@ -26,8 +26,8 @@ namespace StoneChallenge_Payslip.Domain.Entities
             this.Employee = employee;
             this.Month = referenceDate.ToString("MM/yyyy");
             this.Entries = PayslipCalculator.Entries(Salary, employee.HealthPlan, employee.DentalPlan, employee.CommuterBenefits);
-            this.NetSalary = this.Entries.Sum(x => x.Amount);
-            this.Deduction = this.NetSalary - this.Salary;
+            this.NetSalary = Math.Round(this.Entries.Sum(x => x.Amount), 2);
+            this.Deduction = Math.Round(this.NetSalary - this.Salary, 2);
         }
 
         public string Month { get; set; }
