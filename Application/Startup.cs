@@ -47,23 +47,31 @@ namespace StoneChallenge_Payslip.Application
 
                 var stringConnection = $"server={host};userid={userid};pwd={password};port={port};database={userDataBase}";
 
-                options.UseMySql(stringConnection, ServerVersion.AutoDetect(stringConnection), opt =>
+                try
                 {
-                    opt.CommandTimeout(180);
-                    opt.EnableRetryOnFailure(5);
-                });
+                    options.UseMySql(stringConnection, ServerVersion.AutoDetect(stringConnection), opt =>
+                    {
+                        opt.CommandTimeout(180);
+                        opt.EnableRetryOnFailure(5);
+                    });
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message + " " + stringConnection);
+                }
             });
 
             services.AddSingleton(new MapperConfiguration(config =>
             {
                 #region Employee
 
-                config.CreateMap<CreateEmployee, Domain.Entities.Employee>();                
+                config.CreateMap<CreateEmployee, Domain.Entities.Employee>();
                 config.CreateMap<Domain.Entities.Employee, Employee>();
 
                 config.CreateMap<Domain.Entities.Payslip, Payslip>();
                 config.CreateMap<Domain.Entities.Payslip.Entry, Payslip.Entry>().ForMember(x => x.Type,
-                 opt => opt.MapFrom(source => source.Type == EntryType.Discount ? "Desconto" : "Remuneração" )); ;
+                 opt => opt.MapFrom(source => source.Type == EntryType.Discount ? "Desconto" : "Remuneração")); ;
 
                 #endregion
 
