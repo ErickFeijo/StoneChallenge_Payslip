@@ -17,8 +17,6 @@ COPY . .
 FROM build AS testing
 WORKDIR /Application
 RUN dotnet build
-WORKDIR /UnitTest
-RUN dotnet test
 
 # publish
 FROM build AS publish
