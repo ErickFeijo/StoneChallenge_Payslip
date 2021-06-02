@@ -19,9 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Infra.Data\Data.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Tests", "4 - Tests", "{9C8F698C-EDD3-491B-902B-D86A6AEA2382}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Integration", "5.1 - Integration", "{7F861728-5832-4FA4-B37A-4828C3878EB6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Unit", "5.1 - Unit", "{7F861728-5832-4FA4-B37A-4828C3878EB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payslip_UnitTests", "UnitTest\Payslip_UnitTests.csproj", "{3241C936-4DAB-4FE6-8FC1-A3F4272E1A79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payslip_UnitTests", "UnitTest\Payslip_UnitTests.csproj", "{3241C936-4DAB-4FE6-8FC1-A3F4272E1A79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
