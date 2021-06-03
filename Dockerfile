@@ -13,10 +13,10 @@ COPY Infra.Data/*.csproj Infra.Data/
 RUN dotnet restore
 COPY . .
 
-# testing
-FROM build AS testing
 WORKDIR /Application
 RUN dotnet build
+WORKDIR /UnitTest
+RUN dotnet test
 
 # publish
 FROM build AS publish

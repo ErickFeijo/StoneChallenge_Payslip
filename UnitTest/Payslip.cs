@@ -3,6 +3,7 @@ using System;
 using Xunit;
 using System.Collections.Generic;
 using static StoneChallenge_Payslip.Domain.Entities.Payslip;
+using Domain.Shared.Helpers;
 
 namespace UnitTest
 {
@@ -65,34 +66,34 @@ namespace UnitTest
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void Shared_PayslipCalculator_CheckHealthPlanEntries(bool hasHealthPlan)
-        {
-            IEnumerable<Entry> result = PayslipCalculator.Entries(1500, hasHealthPlan, false, false);
-
-            if (hasHealthPlan)
-            {
-                Assert.Contains(result, x => x.Description == "Plano de Saúde");
-            }
-            else
-            {
-                Assert.DoesNotContain(result, x => x.Description == "Plano de Saúde");
-            }
-        }
-
-        [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
         public void Shared_PayslipCalculator_CheckDentalPlanEntries(bool hasDentalPlan)
         {
             IEnumerable<Entry> result = PayslipCalculator.Entries(1500, false, hasDentalPlan, false);
 
             if (hasDentalPlan)
             {
-                Assert.Contains(result, x => x.Description == "Plano Dental");
+                Assert.Contains(result, x => x.Description.Equals("Plano Dental"));
             }
             else
             {
-                Assert.DoesNotContain(result, x => x.Description == "Plano Dental");
+                Assert.DoesNotContain(result, x => x.Description.Equals("Plano Dental"));
+            }
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void Shared_PayslipCalculator_CheckHealthPlanEntries(bool hasHealthPlan)
+        {
+            IEnumerable<Entry> result = PayslipCalculator.Entries(1500, hasHealthPlan, false, false);
+
+            if (hasHealthPlan)
+            {
+                Assert.Contains(result, x => x.Description.RemoveAccents().Equals("Plano de Saude"));
+            }
+            else
+            {
+                Assert.DoesNotContain(result, x => x.Description.RemoveAccents().Equals("Plano de Saude"));
             }
         }
 
@@ -107,11 +108,11 @@ namespace UnitTest
 
             if (hasCommuterBenefits && salary > 1500)
             {
-                Assert.Contains(result, x => x.Description == "Vale Transporte");
+                Assert.Contains(result, x => x.Description.Equals("Vale Transporte"));
             }
             else
             {
-                Assert.DoesNotContain(result, x => x.Description == "Vale Transporte");
+                Assert.DoesNotContain(result, x => x.Description.Equals("Vale Transporte"));
             }                
         }
 
