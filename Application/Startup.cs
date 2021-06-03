@@ -41,25 +41,43 @@ namespace StoneChallenge_Payslip.Application
             {
                 var host = Configuration["MySQL_server"] ?? "localhost";
                 var port = Configuration["MySQL_port"] ?? "3306";
+                var retryTimes = Configuration["MySQL_retryTimes"] ?? "6";
                 var password = Configuration["MySQL_password"] ?? Configuration.GetConnectionString("MYSQL_PASSWORD");
                 var userid = Configuration["MySQL_username"] ?? Configuration.GetConnectionString("MYSQL_USER");
                 var userDataBase = Configuration["MySQL_database"] ?? Configuration.GetConnectionString("MYSQL_DATABASE");
 
                 var stringConnection = $"server={host};userid={userid};pwd={password};port={port};database={userDataBase}";
+                
+                bool connected = false;
+                int numberOfTimes = 0;
 
-                try
+                while (!connected)
                 {
-                    options.UseMySql(stringConnection, ServerVersion.AutoDetect(stringConnection), opt =>
+                    try
                     {
-                        opt.CommandTimeout(180);
-                        opt.EnableRetryOnFailure(5);
-                    });
+                        options.UseMySql(stringConnection, ServerVersion.AutoDetect(stringConnection), opt =>
+                        {
+                            opt.CommandTimeout(180);
+                            opt.EnableRetryOnFailure(5);
+                        });
+                        connected = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Threading.Thread.Sleep(10000);
+                        
+                        if (numberOfTimes.ToString() == retryTimes)
+                        {
+                            throw;
+                        }
+                        else
+                        {
+                            numberOfTimes++;
+                            continue;
+                        }
+                    }
+                }
 
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message + " " + stringConnection);
-                }
             });
 
             services.AddSingleton(new MapperConfiguration(config =>
