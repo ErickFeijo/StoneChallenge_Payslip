@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using StoneChallenge_Payslip.Domain.Entities;
+using Domain.Shared.Helpers;
 
 namespace StoneChallenge_Payslip.Service.Validators
 {
@@ -13,7 +14,8 @@ namespace StoneChallenge_Payslip.Service.Validators
 
             RuleFor(c => c.Identification)
                 .NotEmpty().WithMessage("Please enter the Identification.")
-                .NotNull().WithMessage("Please enter the Identification.");
+                .NotNull().WithMessage("Please enter the Identification.")
+                .Must(x => IdentificationHelpers.IsCpf(x)).WithMessage("Please enter a valid Identification.");
 
             RuleFor(c => c.Admission)
                 .NotEmpty().WithMessage("Please enter the Admission.")

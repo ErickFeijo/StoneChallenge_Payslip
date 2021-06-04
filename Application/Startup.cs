@@ -62,7 +62,7 @@ namespace StoneChallenge_Payslip.Application
                         });
                         connected = true;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         System.Threading.Thread.Sleep(10000);
                         
