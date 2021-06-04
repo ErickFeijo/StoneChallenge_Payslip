@@ -25,7 +25,7 @@ Na empresa existe um setor responsável pela contabilidade e pagamento de seus f
 - MySql
 
 ## Comentários adicionais:
-- A aplicação está com CI/CD com os seguintes passos:
+- A aplicação está com CI/CD utilizando GitHub Actions: (É possível visualizar [aqui](https://github.com/ErickFeijo/StoneChallenge_Payslip/actions))
   - Compilação
   - Execução dos testes
   - Publicação do container na Azure
