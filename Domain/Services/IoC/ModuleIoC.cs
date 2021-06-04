@@ -2,7 +2,7 @@
 using StoneChallenge_Payslip.Domain.Interfaces;
 using StoneChallenge_Payslip.Service.Services;
 
-namespace StoneChallenge_Payslip.Infra.CrossCutting.IoC
+namespace StoneChallenge_Payslip.Domain.IoC
 {
     public class ModuleIoCService : Module
     {

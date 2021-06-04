@@ -7,10 +7,9 @@ namespace Domain.Shared
 {
     public static class PayslipCalculator
     {
-        public static ICollection<Entry> Entries(double salary, bool hasHealthPlan, bool hasDentalPlan, bool hasCommuterBenefits)
+        public static ICollection<Entry> GetEntries(double salary, bool hasHealthPlan, bool hasDentalPlan, bool hasCommuterBenefits)
         {
             ICollection<Entry> entries = new List<Entry>();
-
             entries.Add(new Entry(EntryType.Remuneration, salary, "Salário Bruto"));
 
             DiscountOptionalBenefits(entries, salary, hasHealthPlan, hasDentalPlan, hasCommuterBenefits);
@@ -52,5 +51,14 @@ namespace Domain.Shared
 
             return Math.Round(salaryDay * (daysInMonth - admission.Day + 1), 2);
         }
+
+        public static double CalculateSalary(double salary, DateTime admission, DateTime referenceDate)
+        {
+            if (new DateTime(admission.Year, admission.Month, 1) == new DateTime(referenceDate.Year, referenceDate.Month, 1) && admission.Day != 1)
+                return CalculateProportionalSalary(salary, admission);
+            else
+                return salary;
+        }
+
     }
 }

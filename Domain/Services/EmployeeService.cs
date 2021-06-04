@@ -22,9 +22,9 @@ namespace StoneChallenge_Payslip.Service.Services
             if (employee is null)
                 throw new ArgumentException("Employee not found.");
 
-            DateTime referenceMonth = DateTime.Today.AddMonths(-1);
+            DateTime latestMonth = DateTime.Today.AddMonths(-1);
 
-            TOutputModel outputModel = _mapper.Map<TOutputModel>(new Payslip(employee, referenceMonth));
+            TOutputModel outputModel = _mapper.Map<TOutputModel>(new Payslip(employee, latestMonth));
 
             return outputModel;
         }

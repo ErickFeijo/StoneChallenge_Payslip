@@ -8,9 +8,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StoneChallenge_Payslip.Infra.Data.Context;
 using Autofac;
-using StoneChallenge_Payslip.Infra.CrossCutting.IoC;
 using System;
 using static Domain.Enums.PayslipEnums;
+using StoneChallenge_Payslip.Domain.IoC;
+using StoneChallenge_Payslip.Infra.Data.IoC;
 
 namespace StoneChallenge_Payslip.Application
 {

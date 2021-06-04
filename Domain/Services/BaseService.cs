@@ -27,6 +27,7 @@ namespace StoneChallenge_Payslip.Service.Services
             TEntity entity = _mapper.Map<TEntity>(inputModel);
 
             Validate(entity, Activator.CreateInstance<TValidator>());
+            
             _baseRepository.Insert(entity);
 
             TOutputModel outputModel = _mapper.Map<TOutputModel>(entity);

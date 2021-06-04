@@ -9,8 +9,6 @@ namespace StoneChallenge_Payslip.Domain.Entities
 {
     public class Payslip
     {
-        private Employee Employee;
-
         public Payslip(Employee employee, DateTime referenceDate)
         {
             referenceDate = new DateTime(referenceDate.Year, referenceDate.Month, 1);
@@ -18,16 +16,12 @@ namespace StoneChallenge_Payslip.Domain.Entities
             if (new DateTime(employee.Admission.Year, employee.Admission.Month, 1) > referenceDate)
                 throw new ArgumentException("The employee was hired after the reference month.");
 
-            if (new DateTime(employee.Admission.Year, employee.Admission.Month, 1) == referenceDate && employee.Admission.Day != 1)
-                this.Salary = PayslipCalculator.CalculateProportionalSalary(employee.Salary, employee.Admission);
-            else
-                this.Salary = employee.Salary;
+            this.Salary = PayslipCalculator.CalculateSalary(employee.Salary, employee.Admission, referenceDate);
+            this.Entries = PayslipCalculator.GetEntries(this.Salary, employee.HealthPlan, employee.DentalPlan, employee.CommuterBenefits);
 
-            this.Employee = employee;
-            this.Month = referenceDate.ToString("MM/yyyy");
-            this.Entries = PayslipCalculator.Entries(Salary, employee.HealthPlan, employee.DentalPlan, employee.CommuterBenefits);
             this.NetSalary = Math.Round(this.Entries.Sum(x => x.Amount), 2);
             this.Deduction = Math.Round(this.NetSalary - this.Salary, 2);
+            this.Month = referenceDate.ToString("MM/yyyy");
         }
 
         public string Month { get; set; }
@@ -56,5 +50,5 @@ namespace StoneChallenge_Payslip.Domain.Entities
         }
 
     }
-  
+
 }

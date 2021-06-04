@@ -68,7 +68,7 @@ namespace UnitTest
         [InlineData(false)]
         public void Shared_PayslipCalculator_CheckDentalPlanEntries(bool hasDentalPlan)
         {
-            IEnumerable<Entry> result = PayslipCalculator.Entries(1500, false, hasDentalPlan, false);
+            IEnumerable<Entry> result = PayslipCalculator.GetEntries(1500, false, hasDentalPlan, false);
 
             if (hasDentalPlan)
             {
@@ -85,7 +85,7 @@ namespace UnitTest
         [InlineData(false)]
         public void Shared_PayslipCalculator_CheckHealthPlanEntries(bool hasHealthPlan)
         {
-            IEnumerable<Entry> result = PayslipCalculator.Entries(1500, hasHealthPlan, false, false);
+            IEnumerable<Entry> result = PayslipCalculator.GetEntries(1500, hasHealthPlan, false, false);
 
             if (hasHealthPlan)
             {
@@ -104,7 +104,7 @@ namespace UnitTest
         [InlineData(1400, false)]
         public void Shared_Paysr_CheckCommuterBenefitsEntries(double salary, bool hasCommuterBenefits)
         {
-            IEnumerable<Entry> result = PayslipCalculator.Entries(salary, false, false, hasCommuterBenefits);
+            IEnumerable<Entry> result = PayslipCalculator.GetEntries(salary, false, false, hasCommuterBenefits);
 
             if (hasCommuterBenefits && salary > 1500)
             {
