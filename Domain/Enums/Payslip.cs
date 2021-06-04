@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Domain.Enums
 {
@@ -13,6 +9,28 @@ namespace Domain.Enums
             Discount,
             Remuneration
         }
+
+        public enum EntryName
+        {
+            Salary,
+            INSS,
+            IRRF,
+            FGTS,
+            HealthPlan,
+            DentalPlan,
+            CommuterBenefits,
+        }
+
+        public static Dictionary<EntryName, string> EntryDescriptions = new Dictionary<EntryName, string>()
+        {
+            {    EntryName.Salary, "Salário Bruto" },
+            {    EntryName.INSS, "INSS" },
+            {    EntryName.IRRF, "Imposto Retido na Fonte" },
+            {    EntryName.FGTS, "FGTS" },
+            {    EntryName.HealthPlan, "Plano de Saúde" },
+            {    EntryName.DentalPlan, "Plano Dental" },
+            {    EntryName.CommuterBenefits, "Vale Transporte" }
+        };
 
     }
 }

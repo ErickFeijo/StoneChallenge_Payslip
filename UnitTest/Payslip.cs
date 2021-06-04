@@ -4,6 +4,7 @@ using Xunit;
 using System.Collections.Generic;
 using static StoneChallenge_Payslip.Domain.Entities.Payslip;
 using Domain.Shared.Helpers;
+using static Domain.Enums.PayslipEnums;
 
 namespace UnitTest
 {
@@ -47,11 +48,11 @@ namespace UnitTest
         }
 
         [Theory]
-        [InlineData(1900, 0)] 
+        [InlineData(1900, 0)]
         [InlineData(2826.65, 142.80)]
         [InlineData(3751.05, 354.80)]
         [InlineData(4664.68, 636.13)]
-        [InlineData(10000, 869.36)] 
+        [InlineData(10000, 869.36)]
         public void Shared_LegalCalculator_CalculateIRRF(double salary, double expectedIRRF)
         {
             var result = LegalCalculator.CalculateIRRF(salary);
@@ -72,11 +73,11 @@ namespace UnitTest
 
             if (hasDentalPlan)
             {
-                Assert.Contains(result, x => x.Description.Equals("Plano Dental"));
+                Assert.Contains(result, x => x.Description.Equals(EntryDescriptions[EntryName.DentalPlan]));
             }
             else
             {
-                Assert.DoesNotContain(result, x => x.Description.Equals("Plano Dental"));
+                Assert.DoesNotContain(result, x => x.Description.Equals(EntryDescriptions[EntryName.DentalPlan]));
             }
         }
 
@@ -89,11 +90,11 @@ namespace UnitTest
 
             if (hasHealthPlan)
             {
-                Assert.Contains(result, x => x.Description.RemoveAccents().Equals("Plano de Saude"));
+                Assert.Contains(result, x => x.Description.RemoveAccents().Equals(EntryDescriptions[EntryName.HealthPlan].RemoveAccents()));
             }
             else
             {
-                Assert.DoesNotContain(result, x => x.Description.RemoveAccents().Equals("Plano de Saude"));
+                Assert.DoesNotContain(result, x => x.Description.RemoveAccents().Equals(EntryDescriptions[EntryName.HealthPlan].RemoveAccents()));
             }
         }
 
@@ -108,12 +109,12 @@ namespace UnitTest
 
             if (hasCommuterBenefits && salary > 1500)
             {
-                Assert.Contains(result, x => x.Description.Equals("Vale Transporte"));
+                Assert.Contains(result, x => x.Description.Equals(EntryDescriptions[EntryName.CommuterBenefits]));
             }
             else
             {
-                Assert.DoesNotContain(result, x => x.Description.Equals("Vale Transporte"));
-            }                
+                Assert.DoesNotContain(result, x => x.Description.Equals(EntryDescriptions[EntryName.CommuterBenefits]));
+            }
         }
 
         #endregion

@@ -10,7 +10,7 @@ namespace Domain.Shared
         public static ICollection<Entry> GetEntries(double salary, bool hasHealthPlan, bool hasDentalPlan, bool hasCommuterBenefits)
         {
             ICollection<Entry> entries = new List<Entry>();
-            entries.Add(new Entry(EntryType.Remuneration, salary, "Salário Bruto"));
+            entries.Add(new Entry(EntryType.Remuneration, salary, EntryDescriptions[EntryName.Salary]));
 
             DiscountOptionalBenefits(entries, salary, hasHealthPlan, hasDentalPlan, hasCommuterBenefits);
 
@@ -23,25 +23,25 @@ namespace Domain.Shared
 
         private static void DiscountLegalTaxes(ICollection<Entry> entries, double salary)
         {
-            entries.Add(new Entry(EntryType.Discount, LegalCalculator.CalculateINSS(salary), "INSS"));
-            entries.Add(new Entry(EntryType.Discount, LegalCalculator.CalculateIRRF(salary), "Imposto Retido na Fonte"));
+            entries.Add(new Entry(EntryType.Discount, LegalCalculator.CalculateINSS(salary), EntryDescriptions[EntryName.INSS]));
+            entries.Add(new Entry(EntryType.Discount, LegalCalculator.CalculateIRRF(salary), EntryDescriptions[EntryName.IRRF]));
         }
 
         private static void DiscountLegalBenefits(ICollection<Entry> entries, double salary)
         {
-            entries.Add(new Entry(EntryType.Discount, LegalCalculator.CalculateFGTS(salary), "FGTS"));
+            entries.Add(new Entry(EntryType.Discount, LegalCalculator.CalculateFGTS(salary), EntryDescriptions[EntryName.FGTS]));
         }
 
         private static void DiscountOptionalBenefits(ICollection<Entry> entries, double salary, bool hasHealthPlan, bool hasDentalPlan, bool hasCommuterBenefits)
         {
             if (hasHealthPlan)
-                entries.Add(new Entry(EntryType.Discount, BenefitsCalculator.CalculateHealthPlanDeduction(), "Plano de Saúde"));
+                entries.Add(new Entry(EntryType.Discount, BenefitsCalculator.CalculateHealthPlanDeduction(), EntryDescriptions[EntryName.HealthPlan]));
 
             if (hasDentalPlan)
-                entries.Add(new Entry(EntryType.Discount, BenefitsCalculator.CalculateDentalPlanDeduction(), "Plano Dental"));
+                entries.Add(new Entry(EntryType.Discount, BenefitsCalculator.CalculateDentalPlanDeduction(), EntryDescriptions[EntryName.DentalPlan]));
 
             if (hasCommuterBenefits && salary >= 1500)
-                entries.Add(new Entry(EntryType.Discount, BenefitsCalculator.CalculateCommuterBenefitsDeduction(salary), "Vale Transporte"));
+                entries.Add(new Entry(EntryType.Discount, BenefitsCalculator.CalculateCommuterBenefitsDeduction(salary), EntryDescriptions[EntryName.CommuterBenefits]));
         }
 
         public static double CalculateProportionalSalary(double salary, DateTime admission)

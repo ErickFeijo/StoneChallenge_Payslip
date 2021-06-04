@@ -10,8 +10,4 @@
     <PackageReference Include="FluentValidation.AspNetCore" Version="10.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Entities\Auxiliar\" />
-  </ItemGroup>
-
 </Project>
